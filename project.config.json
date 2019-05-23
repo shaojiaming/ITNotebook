@@ -41,9 +41,10 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "单页编译",
-					"pathName": "pages/list/list",
+					"pathName": "pages/edite/edite",
+					"query": "",
 					"scene": null
 				}
 			]

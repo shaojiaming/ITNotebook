@@ -1,6 +1,6 @@
 <view class='blog'>
   <view class='blog-item' wx:for="{{ blogList }}" wx:key="unique">
-    <navigator class='blog-item-a' url='{{ item.blogId }}'>
+    <navigator class='blog-item-a' url='/pages/detil/detil?blogId={{ item.blogId }}'>
       <!-- 标题 -->
       <view class='loog-item-title'>{{ item.title }}</view>
       <!-- 描述 -->

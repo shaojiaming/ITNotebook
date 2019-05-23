@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/list/list",
-    "pages/detil/detil"
+    "pages/detil/detil",
+    "pages/edite/edite"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -10,5 +11,23 @@
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "borderStyle": "black",
+    "selectedColor": "#00d8a0",
+    "list": [
+      {
+        "iconPath": "image/首页1.png",
+        "selectedIconPath": "image/首页.png",
+        "pagePath": "pages/list/list",
+        "text": "首页"
+      },
+      {
+        "iconPath": "image/编辑1.png",
+        "selectedIconPath": "image/编辑.png",
+        "pagePath": "pages/edite/edite",
+        "text": "编辑"
+      }
+    ]
+  }
 }
