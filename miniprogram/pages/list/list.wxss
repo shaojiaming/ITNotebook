@@ -1,0 +1,62 @@
+/* miniprogram/pages/list/list.wxss */
+
+/**基础风格样式**/
+@import '/towxml/style/main.wxss';
+
+/**如果页面有动态主题切换，则需要将使用到的样式全部引入**/
+
+/**主题配色（浅色样式）**/
+@import '/towxml/style/theme/light.wxss';
+
+.blog {
+  padding: 0 28rpx;
+}
+
+.blog-item {
+  margin: 0;
+  padding: 32rpx 0rpx 28rpx 0rpx;
+  border-top: 2rpx solid #efefef;
+
+}
+
+.blog-item-index {
+  font-size: 1.28571429em;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.loog-item-title {
+  font-size: 1.28571429rem;
+  color: rgba(0, 0, 0, 0.85);
+  margin-bottom: 10rpx;
+  max-height: 130rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.blog-description{
+  font-size: 0.85rem;
+  line-height: 1.2rem;
+  color: rgba(0,0,0,.87);
+  max-height: 84rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.blog-tab {
+  display: flex;
+  margin: 14rpx 0;
+}
+
+.blog-tab-item {
+  font-size: .60rem;
+  color: rgba(0,0,0,.4);
+  margin: 0 6rpx;
+  padding: 2rpx 10rpx 6rpx 18rpx;
+  text-align: center;
+  background-color: #e8e8e8;
+  border: 0 solid transparent;
+  border-radius: 2px;
+}

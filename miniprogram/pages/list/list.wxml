@@ -1,0 +1,14 @@
+<view class='blog'>
+  <view class='blog-item' wx:for="{{ blogList }}" wx:key="unique">
+    <navigator class='blog-item-a' url='{{ item.blogId }}'>
+      <!-- 标题 -->
+      <view class='loog-item-title'>{{ item.title }}</view>
+      <!-- 描述 -->
+      <view class='blog-description'>{{ item.direcption }}</view>
+      <!-- 标签 -->
+      <view class='blog-tab'>
+        <text class='blog-tab-item' wx:for="{{ item.tab }}" wx:key="unique">{{item}}</text>
+      </view>
+    </navigator>
+  </view>
+</view>
