@@ -1,1 +1,69 @@
 /* miniprogram/pages/edite/edite.wxss */
+@import "./assets/iconfont.wxss";
+
+.mainListContainer {
+  margin: 0 14rpx;
+  padding-bottom: 22rpx;
+}
+
+.mainListText {
+  margin: 0 0 0.28571429rem 0;
+  font-size: 0.92857143rem;
+  font-weight: 700;
+}
+
+.mainListInput {
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  line-height: 1rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 1rem;
+  background: #fff;
+  border-radius: 0.14285714rem;
+  box-shadow: 0 0 0 0 transparent inset;
+}
+.nextButton{
+
+}
+
+/*-------------------编辑器 start--------------------*/
+.wrapper {
+  padding: 5px;
+}
+
+.iconfont {
+  display: inline-block;
+  width: 21px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.toolbar {
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  padding-left:8px;
+}
+
+.ql-container {
+  box-sizing: border-box;
+  padding: 12px 15px;
+  width: 100%;
+  min-height: 30vh;
+  height: auto;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.ql-active {
+  color: #06c;
+}
+/*-------------------编辑器 end--------------------*/
+/*-------------------多行输入框 start--------------------*/
+textarea {
+  width: 666rpx;
+}
+/*-------------------多行输入框 end--------------------*/

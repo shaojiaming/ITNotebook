@@ -51,3 +51,8 @@
   border: 0 solid transparent;
   border-radius: 2px;
 }
+.blog-date{
+  font-size: .60rem;
+  color: rgba(0,0,0,.4);
+  margin: 0 6rpx;
+}

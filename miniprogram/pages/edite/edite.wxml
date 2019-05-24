@@ -1,7 +1,28 @@
-<!--miniprogram/pages/edite/edite.wxml-->
-<form>
-  <view>
-    <text>标题：</text>
-    <input type='text'></input>
+<import src="./editor/editor.wxml" />
+<view class='mainContainer'>
+  <!--用户名  -->
+  <view class='mainListContainer'>
+    <view class='mainListText'>标题</view>
+    <input class='mainListInput' maxlength='25' bindinput='titleInput'></input>
   </view>
-</form>
+  <!--文章分类  -->
+  <view class='mainListContainer'>
+    <view class='mainListText'>文章分类</view>
+    <input class='mainListInput' maxlength='14' bindinput='tabInput'></input>
+  </view>
+  <!--描述  -->
+  <view class='mainListContainer'>
+    <view class='mainListText'>描述</view>
+    <!--<template is="editor" data='{{...editor}}' />-->
+    <textarea class="mainListInput" bindinput="bindTextAreaBlur" auto-height />
+  </view>
+  <!--编辑器  -->
+  <view class='mainListContainer'>
+    <view class='mainListText'>编辑器</view>
+    <template is="editor" data='{{...editor}}' />
+    
+  </view>
+</view>
+<!--nextButton  -->
+<view class='nextButton' bindtap='save'>保存</view>
+<!--binding  -->

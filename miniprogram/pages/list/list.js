@@ -7,8 +7,6 @@ Page({
    */
   data: {
     blogList: [],
-    //article将用来存储towxml数据
-    article: {}
   },
 
   /**
@@ -18,6 +16,7 @@ Page({
     var that = this;
     wx.cloud.database().collection('blog').get({
       success: function (res) {
+        console.log(res.data[0].date.toString())
         that.setData({
           blogList: res.data
         })
@@ -75,3 +74,4 @@ Page({
 
   }
 })
+

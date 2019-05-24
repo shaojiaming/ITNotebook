@@ -1,66 +1,147 @@
-// miniprogram/pages/edite/edite.js
+const db = wx.cloud.database()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    title: '',
+    type: '',
+    description: '',
+    editor: {
+      formats: {},
+      bottom: 0,
+      readOnly: false,
+      placeholder: '开始输入...',
+      _focus: false,
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  titleInput: function(e) {
+    this.setData({
+      title: e.detail.value
+    });
+  },
+  tabInput: function(e) {
+    this.setData({
+      type: e.detail.value
+    });
+  },
+  bindTextAreaBlur: function(e) {
+    this.setData({
+      description: e.detail.value
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  save: function() {
+    db.collection('blog').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        // _id: 'todo-identifiant-aleatoire', // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
+        title: this.data.title,
+        type: this.data.type,
+        description: this.data.description,
+        date: new Date('2018-09-01'),
+        tags: [
+          'cloud',
+          'database'
+        ],
+        // 为待办事项添加一个地理位置（113°E，23°N）
+        location: new db.Geo.Point(113, 23),
+      },
+      success(res) {
+        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+        console.log(res)
+      },
+      fail: console.error
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
+
+
+
+
+
+
+
+  readOnlyChange() {
+    this.setData({
+      readOnly: !this.data.readOnly
+    })
+  },
+  onLoad() {
+    wx.loadFontFace({
+      family: 'Pacifico',
+      source: 'url("https://sungd.github.io/Pacifico.ttf")',
+      success: console.log
+    })
+  },
+  onEditorReady() {
+    const that = this
+    wx.createSelectorQuery().select('#editor').context(function(res) {
+      that.editorCtx = res.context
+    }).exec()
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+  undo() {
+    this.editorCtx.undo()
+  },
+  redo() {
+    this.editorCtx.redo()
+  },
+  format(e) {
+    let {
+      name,
+      value
+    } = e.target.dataset
+    if (!name) return
+    // console.log('format', name, value)
+    this.editorCtx.format(name, value)
 
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  onStatusChange(e) {
+    const formats = e.detail;
+    this.setData({
+      formats
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  insertDivider() {
+    this.editorCtx.insertDivider({
+      success: function() {
+        console.log('insert divider success')
+      }
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  clear() {
+    this.editorCtx.clear({
+      success: function(res) {
+        console.log("clear success")
+      }
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  removeFormat() {
+    this.editorCtx.removeFormat()
+  },
+  insertDate() {
+    const date = new Date()
+    const formatDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+    this.editorCtx.insertText({
+      text: formatDate
+    })
+  },
+  insertImage() {
+    const that = this
+    wx.chooseImage({
+      count: 1,
+      success: function() {
+        that.editorCtx.insertImage({
+          src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1543767268337&di=5a3bbfaeb30149b2afd33a3c7aaa4ead&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20151031%2Ftooopen_sy_147004931368.jpg',
+          data: {
+            id: 'abcd',
+            role: 'god'
+          },
+          success: function() {
+            console.log('insert image success')
+          }
+        })
+      }
+    })
   }
 })

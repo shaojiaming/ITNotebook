@@ -1,14 +1,16 @@
+<wxs module="util" src="../../utils/util.wxs"></wxs>
 <view class='blog'>
   <view class='blog-item' wx:for="{{ blogList }}" wx:key="unique">
     <navigator class='blog-item-a' url='/pages/detil/detil?blogId={{ item.blogId }}'>
       <!-- 标题 -->
       <view class='loog-item-title'>{{ item.title }}</view>
       <!-- 描述 -->
-      <view class='blog-description'>{{ item.direcption }}</view>
+      <view class='blog-description'>{{ item.description }}</view>
       <!-- 标签 -->
       <view class='blog-tab'>
-        <text class='blog-tab-item' wx:for="{{ item.tab }}" wx:key="unique">{{item}}</text>
+        <text class='blog-tab-item' wx:for="{{ item.tags }}" wx:key="unique">{{item}}</text>
       </view>
+      <view class='blog-date'>{{ item.date }}</view>
     </navigator>
   </view>
 </view>
